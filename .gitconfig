@@ -1,0 +1,18 @@
+[user]
+	email = codyho@stanford.edu
+	name = Cody Ho
+[color]
+	ui = auto
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+[diff "hex"]
+	textconv = xxd
+	binary = true
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
+[push]
+	default = simple
