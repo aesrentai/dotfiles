@@ -40,6 +40,7 @@ autocmd BufNewFile,BufRead *.md
  
  
 call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for': ['typescript', 'javascript']}
 call plug#end()
