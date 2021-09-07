@@ -25,6 +25,10 @@ let mapleader = "\<Space>"
 autocmd Filetype javascript,typescript,html,css
 	\ setlocal expandtab shiftwidth=4 tabstop=4 
 	\ | let g:indentLine_char = '|'
+
+" JSON syntax
+autocmd Filetype json
+	\ setlocal expandtab shiftwidth=4 tabstop=4
  
 "PYTHON
 autocmd Filetype python
