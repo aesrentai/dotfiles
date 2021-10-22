@@ -71,4 +71,11 @@ alias lla="ls -la"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias n="nohup"
+n(){
+	nohup "$@" &>/dev/null &
+}
+ne(){
+	nohup "$@" &>/dev/null &
+	exit
+}
+
