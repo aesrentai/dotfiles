@@ -76,6 +76,7 @@ n(){
 }
 ne(){
 	nohup "$@" &>/dev/null &
+	sleep 1
 	exit
 }
 
