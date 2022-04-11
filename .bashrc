@@ -61,6 +61,9 @@ fi
 #ssh using GPG public key
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
+#allow kitty to play nice with ssh
+export TERM="xterm-256color"
+
 #Universal aliases below
 if [ -x /usr/bin/dircolors ]; then
 	alias ls="ls --color=auto"
