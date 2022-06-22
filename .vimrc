@@ -19,3 +19,6 @@ set autoindent
  
 "for all leader shortcuts
 let mapleader = "\<Space>"
+
+"automatically open some files in hex mode
+let g:hexedit_patterns = '*.bin,*.exe,*.so,*.o'
