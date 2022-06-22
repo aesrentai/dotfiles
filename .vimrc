@@ -3,7 +3,7 @@ set number
 set incsearch
 set hlsearch
 set cc=80,100
-set textwidth=80
+set textwidth=100
 set showcmd
 set showmode
 set showmatch
