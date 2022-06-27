@@ -3,7 +3,7 @@ set number
 set ruler
 
 "always show tab characters
-set listchars=tab:▸\
+set listchars=tab:▸·
 set list
 
 "highlight whitespace at the end of line
@@ -32,7 +32,7 @@ set backspace=indent,eol,start
 "light mode is evil
 set background=dark
 
-syntax enable 
+syntax enable
 
 filetype plugin indent on
 
