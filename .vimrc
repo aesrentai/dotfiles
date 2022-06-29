@@ -3,12 +3,8 @@ set number
 set ruler
 
 "always show tab characters
-set listchars=tab:▸·
+set listchars=tab:»·
 set list
-
-"highlight whitespace at the end of line
-:highlight ExtraWhitespace ctermbg=darkred guibg=lightred
-:match ExtraWhitespace /\s\+$/
 
 "set encoding
 set encoding=utf-8
