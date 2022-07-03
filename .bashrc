@@ -73,3 +73,9 @@ alias ll="ls -l"
 alias lla="ls -la"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Use gvim on Fedora since system clipboard integration is disabled
+source /etc/os-release
+if [[ $ID -eq "fedora" && -f "/bin/gvim" ]]; then
+    alias vim="gvim -v"
+fi
