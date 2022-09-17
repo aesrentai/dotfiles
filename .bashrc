@@ -78,6 +78,31 @@ alias ll="ls -l"
 alias lla="ls -la"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles_init() {
+    # Update all submodules
+    dotfiles submodule update --init --recursive
+
+    # make sure vim is ready for YCM
+    local VIM_OPTS=$(vim --version | grep +python)
+    if [ -n "$VIM_OPTS" ]; then
+        # set YCM flags
+        local DIR=$(pwd)
+        local FLAGS="--rust-completer --clangd-completer"
+        if [ -f /usr/bin/go ]; then
+            FLAGS="--go-completer $FLAGS"
+        fi
+        if [ -f /usr/bin/npm ]; then
+            FLAGS="--ts-completer $FLAGS"
+        fi
+
+        # build YCM
+        cd $HOME/.vim/pack/plugins/start/vim-ycm
+        python3 install.py $FLAGS
+        cd $DIR
+    else
+        echo "Vim not compiled with python support, cannot build YouCompleteMe"
+    fi
+}
 
 # Use gvim on Fedora since system clipboard integration is disabled
 source /etc/os-release
