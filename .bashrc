@@ -37,6 +37,11 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# add rust binaries if installed
+if [ -f "$HOME/.cargo/env" ]; then
+    . $HOME/.cargo/env
+fi
+
 # show current working path in shell
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
