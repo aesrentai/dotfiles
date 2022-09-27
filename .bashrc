@@ -87,7 +87,13 @@ dotfiles_init() {
     if [ -n "$VIM_OPTS" ]; then
         # set YCM flags
         local DIR=$(pwd)
-        local FLAGS="--rust-completer --clangd-completer"
+        local FLAGS=""
+        if [ -f /usr/bin/clang ]; then
+            FLAGS="--clangd-completer"
+        fi
+        if [ -d $HOME/.cargo ]; then
+            FLAGS="--rust-completer $FLAGS"
+        fi
         if [ -f /usr/bin/go ]; then
             FLAGS="--go-completer $FLAGS"
         fi
