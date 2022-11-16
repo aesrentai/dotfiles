@@ -3,8 +3,6 @@
 	name = Cody Ho
 [color]
 	ui = auto
-[commit]
-	gpgsign = true
 [core]
 	editor = vim
 [diff "hex"]
