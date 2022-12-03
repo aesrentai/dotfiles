@@ -1,1 +1,1 @@
-colorscheme=torte
+colorscheme torte
