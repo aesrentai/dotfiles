@@ -40,3 +40,7 @@ let mapleader = "\<Space>"
 
 "automatically open some files in hex mode
 let g:hexedit_patterns = '*.bin,*.exe,*.so,*.o'
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
