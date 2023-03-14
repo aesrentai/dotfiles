@@ -13,3 +13,6 @@
 [submodule ".vim/pack/plugins/start/vim-ycm"]
 	path = .vim/pack/plugins/start/vim-ycm
 	url = https://github.com/ycm-core/YouCompleteMe
+[submodule ".vim/pack/plugins/start/vim-nerdtree"]
+	path = .vim/pack/plugins/start/vim-nerdtree
+	url = https://github.com/preservim/nerdtree
