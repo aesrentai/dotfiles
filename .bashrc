@@ -62,7 +62,7 @@ if [ -f /usr/bin/vim ]; then
     export VISUAL=vim
     export EDITOR=$VISUAL
 else
-    export VISUAL=nano
+    export VISUAL=vi
     export EDITOR=$VISUAL
 fi
 
