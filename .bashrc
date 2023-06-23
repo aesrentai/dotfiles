@@ -66,11 +66,15 @@ else
     export EDITOR=$VISUAL
 fi
 
-#ssh using GPG public key
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+# if this is not a ssh session
+if [[ -z "$SSH_CLIENT" && -z "$SSH_CONNECTION" && "$(ps -o comm= -p "$PPID")" != "sshd" ]]; then
+    #ssh using GPG public key
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+else
+    #allow kitty to play nice with ssh
+    export TERM="xterm-256color"
+fi
 
-#allow kitty to play nice with ssh
-export TERM="xterm-256color"
 
 #Universal aliases below
 if [ -x /usr/bin/dircolors ]; then
