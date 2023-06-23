@@ -16,7 +16,6 @@ set showmatch
 
 "line limit settings
 set cc=80,100
-set textwidth=100
 
 "last line
 set showcmd
