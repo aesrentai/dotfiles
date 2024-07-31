@@ -128,7 +128,7 @@ macos_init() {
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     brew install --cask nikitabobko/tap/aerospace
-    brew install vim cmake firefox chromium bash
+    brew install vim cmake firefox chromium bash flameshot
     if ! grep -q "^/usr/local/bin/bash$" /etc/shells; then
             sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
     fi
@@ -142,6 +142,7 @@ if [ "$(uname)" == "Darwin" ]; then
     if [ -f "/opt/homebrew/bin/brew" ]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
+    alias firefox="open -a /Applications/Firefox.app"
 fi
 
 # Use gvim on Fedora since system clipboard integration is disabled
