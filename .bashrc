@@ -72,7 +72,7 @@ else
 fi
 
 # if this is not a ssh session
-if [[ -z "$SSH_CLIENT" && -z "$SSH_CONNECTION" && "$(ps -o comm= -p "$PPID")" != "sshd" ]]; then
+if command -v gpgconf &> /dev/null && [[ -z "$SSH_CLIENT" && -z "$SSH_CONNECTION" && "$(ps -o comm= -p "$PPID")" != "sshd" ]]; then
     #ssh using GPG public key
     export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 else
@@ -122,8 +122,32 @@ dotfiles_init() {
     fi
 }
 
+macos_init() {
+    # install homebrew if not installed
+    if [ ! -d "/opt/homebrew" ] && [ ! -d "/usr/local/Homebrew" ] && ! command -v brew &> /dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    brew install --cask nikitabobko/tap/aerospace
+    brew install vim cmake firefox chromium bash
+    if ! grep -q "^/usr/local/bin/bash$" /etc/shells; then
+            sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+    fi
+    if [ "$(dscl . -read /Users/$USER UserShell | cut -d: -f2)" != "/usr/local/bin/bash" ]; then
+            chsh -s /usr/local/bin/bash
+    fi
+    dotfiles_init
+}
+
+if [ "$(uname)" == "Darwin" ]; then
+    if [ -f "/opt/homebrew/bin/brew" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+fi
+
 # Use gvim on Fedora since system clipboard integration is disabled
-source /etc/os-release
+if [ -f /etc/os-release ]; then
+      source /etc/os-release
+fi
 if [[ $ID -eq "fedora" && -f "/bin/gvim" ]]; then
     alias vim="gvim -v"
 fi
