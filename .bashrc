@@ -128,9 +128,11 @@ macos_init() {
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     brew install --cask nikitabobko/tap/aerospace
-    brew install vim cmake firefox chromium bash flameshot
-    if ! grep -q "^/usr/local/bin/bash$" /etc/shells; then
-            sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+    brew install vim cmake firefox chromium bash flameshot kitty
+    BASH_VERSION="$(brew list --versions bash | awk '{print $2}')"
+    BASH_EXECUTABLE="/opt/homebrew/Cellar/bash/$(BASH_VERSION)/bin/bash"
+    if ! grep -q "^${BASH_EXECUTABLE}$" /etc/shells; then
+          sudo bash -c "echo ${BASH_EXECUTABLE} >> /etc/shells"
     fi
     if [ "$(dscl . -read /Users/$USER UserShell | cut -d: -f2)" != "/usr/local/bin/bash" ]; then
             chsh -s /usr/local/bin/bash
